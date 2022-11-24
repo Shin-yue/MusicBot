@@ -1,11 +1,5 @@
 🎵 ex-music is a telegram bot project that's allow you to play music on telegram voice chat group.
 
-
-#### Heroku Deployment 
-The easy way to host this bot, deploy to Heroku, Change the app country to Europe (it will help to make the bot stable).
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/riz-ex/ex-music)
-
 #### VPS Deployment 📡
 
 Get the best Quality of streaming performance by hosting it on VPS, here's the step's:
@@ -29,6 +23,6 @@ python3 -m Music # run the bot.
 
 
 #### Support & Updates 
-<a href="https://t.me/botdiscuss"><img src="https://img.shields.io/badge/Join-Group%20Support-black.svg?style=for-the-badge&logo=Telegram"></a> <a href="https://t.me/exprojects"><img src="https://img.shields.io/badge/Join-Updates%20Channel-black.svg?style=for-the-badge&logo=Telegram"></a>
+<a href="https://t.me/shin_yue"><img src="https://img.shields.io/badge/Join-Group%20Support-black.svg?style=for-the-badge&logo=Telegram"></a> <a href="https://t.me/avviothic"><img src="https://img.shields.io/badge/Join-Updates%20Channel-black.svg?style=for-the-badge&logo=Telegram"></a>
 
 #### Full Credit is Given to [@TeamYukki](https://t.me/OfficialYukki) as the owner & creator of this Repository.
