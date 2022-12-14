@@ -153,44 +153,24 @@ async def play(_, message: Message):
            )
 
 
-@app.on_message(command(["bug", f"bug@{BOT_USERNAME}"]))
-async def bug(bot, message: Message):
-    invite_link = await message.chat.export_invite_link()
-    if message.chat.username:
-        chatusername = (f"{message.chat.username}")
+@app.on_message(command('bug'))
+async def bug(_, m: Message):
+    report = ' '.join(m.command[1:])
+    if m.reply_to_message:
+        report = m.reply_to_message.text
+        await m.reply_text('The bug report successfully sent to the support group.')
+        try:
+            kontol = (
+                "📣 <b>New Reporting!</b>\n"
+                "👤 {} [<code>{}</code>]\n"
+                "💭 {}"
+            ).format(m.from_user.mention(), m.from_user.id, report)
+            await app.send_message(chat_id=LOG_GROUP_ID, text=kontol)  
+        except Exception as memek:
+            pass                       
     else:
-        chatusername = ("Private group")
-    if message.sender_chat:
-        return await message.reply_text(
-            "you're an __Anonymous Admin__ !\n\n» revert back to user account from admin rights."
+        text = (
+            '<b>Usage:</b> <code>/bug the bug report</code> '
+            'or you can reply to the message to report a bug.'
         )
-        await message.delete()
-    else:
-        if len(message.command) < 2:
-            await message.reply_text(
-                "You must specify the bug to report\nexample : `/bug the reason you want to report`"
-            )
-            return
-    await message.reply_text(
-        "✅ **Bug reported successfully.**\n__The report has been sent to the support [group](https://t.me/botdiscuss)__",
-        disable_web_page_preview=True)
-    await bot.send_message(LOG_GROUP_ID, f"""
-📣 **New Bug Reporting!** 
-
-**Chat ID:** `{message.chat.id}`
-**Place Link:** [{message.chat.title}]({invite_link})
-**User Profil:** {message.from_user.mention()}
-
-**Contents of the report:**
-{' '.join(message.command[1:])}
-""",
-      disable_web_page_preview=True,
-      reply_markup=InlineKeyboardMarkup(
-      [
-         [
-            InlineKeyboardButton("View Message", url=f"{message.link}"),
-         ],
-         [
-            InlineKeyboardButton("🗑️ Close", callback_data="close2")]]
-         ),
-      )
+        return await m.reply_text(text)
